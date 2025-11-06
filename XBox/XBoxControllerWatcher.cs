@@ -9,8 +9,9 @@ namespace XBox
         public event ControllerEvent ControllerConnected;
         public event ControllerEvent ControllerDisconnected;
 
-        Dictionary<int, bool> _connectionStates = new Dictionary<int, bool>();
+        private readonly Dictionary<int, bool> _connectionStates = new Dictionary<int, bool>();
         private bool _stopWatching = false;
+
         public XBoxControllerWatcher()
         {
             System.Threading.ThreadPool.QueueUserWorkItem(o => WatcherLoop());
@@ -77,6 +78,7 @@ namespace XBox
         }
 
         #region IDisposable Support
+
         private bool disposedValue = false; // To detect redundant calls
 
         protected virtual void Dispose(bool disposing)
@@ -110,6 +112,7 @@ namespace XBox
             // TODO: uncomment the following line if the finalizer is overridden above.
             // GC.SuppressFinalize(this);
         }
+
         #endregion
     }
 }

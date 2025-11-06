@@ -6,16 +6,17 @@ namespace XBox
 {
     public class XBoxController
     {
-        private SharpDX.XInput.Controller dxC;
+        private readonly SharpDX.XInput.Controller dxC;
         private SharpDX.XInput.State lastGamepadState = new SharpDX.XInput.State();
         private int lastLeftMotorRawValue;
         private long lastMsRefreshed;
         private int lastRightMotorRawValue;
-        private int pIndex;
-        private long ticksPerMs = TimeSpan.TicksPerMillisecond;
+        private readonly int pIndex;
+        private readonly long ticksPerMs = TimeSpan.TicksPerMillisecond;
         private bool connected = false;
 
         private static Dictionary<int, XBoxController> _controllers = null;
+
         public static IEnumerable<XBoxController> GetConnectedControllers()
         {
             InitControllers();
